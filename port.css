@@ -1,7 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
+html {
+    scroll-behavior: smooth;
+}
 *{
     margin: 0;
     padding: 0;
@@ -28,10 +30,24 @@ body {
 }
 
 .logo {
+    position: relative;
     font-size: 25px;
     color: #ededed;
     text-decoration: none;
     font-weight: 600;
+
+}
+
+.logo::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #081b29;
+    animation: showRight 1s ease forwards;
+    animation-delay: .4s;
 
 }
 .navbar a {
@@ -47,6 +63,8 @@ body {
     color: #00abf0;
 }
 .home {
+    /* background: url('nature_.jpg') no-repeat; */
+    background-size: cover;
     display: flex;
     align-items: center;
     height: 100vh;
@@ -75,9 +93,18 @@ body {
 
 .home-content .btn-box {
     display: flex;
-    justify-content: space-between;
-    width: 345px;
+    gap: 20px;
+    max-width: 100%;
     height: 50px;
+}
+@media (max-width: 450px) {
+    .home-content .btn-box {
+        flex-direction: column; /* Stack buttons on very small screens */
+        height: auto;
+    }
+    .btn-box a {
+        width: 100%; /* Full width buttons on mobile */
+    }
 }
 
 .btn-box a {
@@ -143,6 +170,7 @@ body {
 }
 
 .home-sci a {
+    position: relative;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -154,4 +182,278 @@ body {
     font-size: 20px;
     color: #00abf0;
     text-decoration: none;
+    z-index: 1;
+    overflow: hidden;   
+    transition: .5s; 
+}
+
+.home-sci a:hover   {
+    color: #081b29;
+} 
+
+.home-sci a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: #00abf0;
+    z-index: -1;
+    transition: .5s;
+}
+
+.home-sci a:hover::before   {
+    width: 100%;
+}
+
+.home-imgHover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%; /* Slightly smaller for better balance */
+    height: 100%;
+    background: transparent;
+    transition: 3s;
+    /* Optional: Add a subtle glow or background image here */
+    background: radial-gradient(circle at center, rgba(0, 171, 240, 0.1) 0%, transparent 70%);
+    pointer-events: none; /* Allows you to click things 'under' the glow */
+}
+
+/* Create a glowing border effect on hover */
+.home:hover .home-imgHover {
+    background: radial-gradient(circle at center, rgba(0, 171, 240, 0.2) 0%, transparent 80%);
+}
+
+/* KEYFRAMES ANIMATION */
+@keyframes showRight {
+    100% {
+        width: 0;
+    }
+}
+.home-content h1, 
+.home-content h3, 
+.home-content p, 
+.home-content .btn-box {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.home-content h1 { animation-delay: 0.5s; }
+.home-content h3 { animation-delay: 0.7s; }
+.home-content p { animation-delay: 0.9s; }
+.home-content .btn-box { animation-delay: 1.1s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.services {
+    min-height: 100vh;
+    padding: 10rem 10% 2rem;
+    background: #081b29; /* Keeping your dark theme */
+}
+
+.heading {
+    font-size: 4.5rem;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.heading span {
+    color: #00abf0; /* Using your accent color[cite: 3] */
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.services-box {
+    flex: 1 1 30rem;
+    background: rgba(17, 46, 66, 0.6); /* Slightly transparent */
+    padding: 3rem 2rem 4rem;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    transition: 0.3s ease;
+    backdrop-filter: blur(8px); /* The "frosted glass" look */
+}
+
+.services-box:hover {
+    border-color: #00abf0;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.services-box i {
+    font-size: 7rem;
+    color: #00abf0;
+}
+
+.services-box h3 {
+    font-size: 2.6rem;
+}
+
+.services-box p {
+    font-size: 1.6rem;
+    margin: 1rem 0 3rem;
+}
+.portfolio {
+    background: #112e42; /* Slightly lighter dark for contrast */
+    padding: 10rem 10% 2rem;
+}
+
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.portfolio-box {
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 0 1rem #081b29;
+    overflow: hidden;
+    display: flex;
+    background: rgba(17, 46, 66, 0.6); /* Slightly transparent */
+    backdrop-filter: blur(8px); /* The "frosted glass" look */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    width: 48%; /* Keeps two inputs side-by-side on desktop */
+}
+
+.portfolio-box img {
+    width: 100%;
+    transition: .5s ease;
+    height: 250px;
+    object-fit: cover;
+}
+
+.portfolio-box:hover img {
+    transform: translateY(-5px);
+    border-color: #00abf0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, .1), #00abf0); /* Using your accent blue */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 2rem;
+    transform: translateY(100%);
+    transition: .5s ease;
+    overflow: hidden;
+}
+
+.portfolio-box:hover .portfolio-layer {
+    transform: translateY(0);
+}
+
+.portfolio-layer h4 {
+    font-size: 3rem;
+    color: #081b29;
+}
+
+.portfolio-layer p {
+    font-size: 1.4rem;
+    margin: .3rem 0 1rem;
+    color: #081b29;
+    font-weight: 500;
+}
+
+.portfolio-layer a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    background: #ededed;
+    border-radius: 50%;
+}
+
+.portfolio-layer a i {
+    font-size: 2rem;
+    color: #081b29;
+}.contact {
+    min-height: 100vh;
+    padding: 10rem 10% 2rem;
+    background: #081b29; /* Matches your main background */
+}
+
+.contact h2 {
+    margin-bottom: 3rem;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact form .input-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: #ededed;
+    background: #112e42;
+    border-radius: .8rem;
+    margin: .7rem 0;
+    border: none;
+}
+
+/* Specific sizing for side-by-side inputs on desktop */
+.contact form .input-box input {
+    width: 48%; /* Keeps two inputs side-by-side on desktop */
+}
+
+.contact form textarea {
+    resize: none;
+}
+
+.contact form .btn {
+    margin-top: 2rem;
+    cursor: pointer;
+    background: #00abf0; /* Your signature blue */
+    color: #081b29;
+    border: none;
+    padding: 1.5rem 3rem;
+    font-weight: 600;
+    transition: .5s;
+}
+
+.contact form .btn:hover {
+    box-shadow: 0 0 1rem #00abf0;
+}
+
+/* Mobile Responsiveness for Form */
+@media (max-width: 600px) {
+    .contact form .input-box input {
+        width: 100%;
+    }
 }

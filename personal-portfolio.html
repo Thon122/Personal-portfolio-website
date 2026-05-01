@@ -13,18 +13,18 @@
 
         <nav class="navbar">
             <a href="#" class="active">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Portfolio</a>
-            <a href="#">Contact</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
     <section class="home">
         <div class="home-content">
             <h1>Hi, I'm Abraham Thon</h1>
-            <h3>Frontend Developer</h3>
+            <h3>Full-Stack Developer</h3>
             <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita aspernatur repellendus fugiat modi inventore, laboriosam nisi iure dolorum? Nihil reprehenderit neque provident tempore iure inventore. Non, possimus?
+               "I am a Computer Science Engineer specializing in building robust web ecosystems and mobile-first applications. From designing database schemas with Prisma to crafting responsive UIs, I build scalable solutions for modern businesses."
             </p>
             <div class="btn-box">
                 <a href="#">Hire Me</a>
@@ -38,5 +38,83 @@
                 <!-- <a href="#"><i class='bx bxl-facebook'></i></a> -->
             </div>
         </div>
+        <span class="home-imgHover"></span>
     </section>
+    <section class="services" id="services">
+    <h2 class="heading">Our <span>Services</span></h2>
+
+    <div class="services-container">
+        <div class="services-box">
+            <i class='bx bx-code-alt'></i>
+            <h3>Web Development</h3>
+            <p>Building high-performance web applications using Next.js, React, and Tailwind CSS. I specialize in creating responsive, SEO-friendly sites with complex backend logic.</p>
+            <a href="#" class="btn">Read More</a>
+        </div>
+
+        <div class="services-box">
+            <i class='bx bxl-android'></i>
+            <h3>Mobile App Dev</h3>
+            <p>Developing cross-platform mobile applications with React Native. From MVP design to deployment, I ensure a seamless user experience on both iOS and Android.</p>
+            <a href="#" class="btn">Read More</a>
+        </div>
+
+        <div class="services-box">
+            <i class='bx bx-data'></i>
+            <h3>Backend & Database</h3>
+            <p>Architecting robust server-side solutions using Node.js, Prisma ORM, and Supabase. I focus on secure data management and efficient API integrations.</p>
+            <a href="#" class="btn">Read More</a>
+        </div>
+    </div>
+</section>
+<section class="portfolio" id="portfolio">
+    <h2 class="heading">Latest <span>Projects</span></h2>
+
+    <div class="portfolio-container">
+        <!-- Project 1: Riding App -->
+        <div class="portfolio-box">
+            <img src="riding-app-thumbnail.jpg" alt="Riding App">
+            <div class="portfolio-layer">
+                <h4>Riding App</h4>
+                <p>A full-stack mobile application built with React Native and Google Maps API for real-time ride tracking.</p>
+                <a href="#"><i class='bx bx-link-external'></i></a>
+            </div>
+        </div>
+
+        <!-- Project 2: Children of the Nile -->
+        <div class="portfolio-box">
+            <img src="nile-project-thumbnail.jpg" alt="Children of the Nile">
+            <div class="portfolio-layer">
+                <h4>Children of the Nile</h4>
+                <p>A Next.js web ecosystem integrated with Supabase and Prisma for robust data management and donor tracking.</p>
+                <a href="#"><i class='bx bx-link-external'></i></a>
+            </div>
+        </div>
+
+        <!-- Project 3: Portfolio Site -->
+        <div class="portfolio-box">
+            <img src="portfolio-thumbnail.jpg" alt="Personal Portfolio">
+            <div class="portfolio-layer">
+                <h4>Personal Portfolio</h4>
+                <p>A responsive, animated developer showcase built with HTML, CSS, and modern UI/UX principles.</p>
+                <a href="#"><i class='bx bx-link-external'></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="contact" id="contact">
+    <h2 class="heading">Contact <span>Me!</span></h2>
+
+    <form action="#">
+        <div class="input-box">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+        </div>
+        <div class="input-box">
+            <input type="number" placeholder="Mobile Number">
+            <input type="text" placeholder="Email Subject">
+        </div>
+        <textarea name="" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
+        <input type="submit" value="Send Message" class="btn">
+    </form>
+</section>
 </body>
