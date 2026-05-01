@@ -2,18 +2,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 html {
+    overflow-x: hidden;
     scroll-behavior: smooth;
 }
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
     font-family: 'poppins', 'sans-serif';
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* This kills the horizontal scroll */
+    box-sizing: border-box;
 }
 
 body {
     background: #081b29;
     color: #ededed;
+    overflow-x: hidden;
 }
 
 .header{
@@ -57,6 +69,7 @@ body {
     font-weight: 500;
     margin-left: 35px;
     transition: .3s;
+    margin-left: 4.5rem;
 }
 .navbar a:hover,
 .navbar a.active {
@@ -263,7 +276,7 @@ body {
 .heading {
     font-size: 4.5rem;
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 8rem;
 }
 
 .heading span {
@@ -317,19 +330,24 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     align-items: center;
-    gap: 2.5rem;
+    gap: 2rem;
+    width: 100%;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .portfolio-box {
     position: relative;
-    border-radius: 15px;
-    box-shadow: 0 0 1rem #081b29;
+    aspect-ratio: 1 / 1;
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
     overflow: hidden;
     display: flex;
-    background: rgba(17, 46, 66, 0.6); /* Slightly transparent */
-    backdrop-filter: blur(8px); /* The "frosted glass" look */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
-    width: 48%; /* Keeps two inputs side-by-side on desktop */
+    background: rgba(17, 46, 66, 0.6); 
+    backdrop-filter: blur(8px); 
+    border: 2px solid rgba(0, 171, 240, 0.1);
 }
 
 .portfolio-box img {
@@ -367,7 +385,7 @@ body {
     transform: translateY(0);
 }
 
-.portfolio-layer h4 {
+.portfolio-layer h3 {
     font-size: 3rem;
     color: #081b29;
 }
@@ -437,23 +455,47 @@ body {
 }
 
 .contact form .btn {
-    margin-top: 2rem;
-    cursor: pointer;
+    display: inline-block;
+    padding: 1.2rem 2.8rem;
     background: #00abf0; /* Your signature blue */
+    border-radius: .8rem; /* Matches the square-ish rounded corners of 'Hire Me' */
+    box-shadow: 0 0 1rem #00abf0;
+    font-size: 1.6rem;
     color: #081b29;
-    border: none;
-    padding: 1.5rem 3rem;
+    letter-spacing: .1rem;
     font-weight: 600;
-    transition: .5s;
+    transition: .5s ease;
+    cursor: pointer;
+    border: none; /* Removes default button border */
+    margin-top: 3rem;
 }
 
 .contact form .btn:hover {
-    box-shadow: 0 0 1rem #00abf0;
+    box-shadow: none; /* Or keep a glow if 'Hire Me' has one */
+    background: transparent;
+    color: #00abf0;
+    border: 2px solid #00abf0;
 }
 
 /* Mobile Responsiveness for Form */
 @media (max-width: 600px) {
     .contact form .input-box input {
         width: 100%;
+    }
+}
+section {
+    padding: 12rem 10% 12rem; /* Increased top/bottom padding for "breathability" */
+}
+@media (max-width: 768px) {
+    section {
+        padding: 5rem 5% 5rem; /* Less side padding on mobile */
+    }
+
+    .heading {
+        font-size: 3.5rem; /* Shrink headers so they don't break lines */
+    }
+
+    .navbar {
+        display: none; /* We will need a hamburger menu later */
     }
 }
