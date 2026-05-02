@@ -33,12 +33,14 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 10px;
-    background: transparent;
+    padding: 1.5rem 10%;
+    background: rgba(8, 27, 41, 0.7);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 171, 240, 0.1);
 }
 
 .logo {
@@ -76,7 +78,7 @@ body {
     color: #00abf0;
 }
 .home {
-    /* background: url('nature_.jpg') no-repeat; */
+    background: url('nature_.jpg') no-repeat center center fixed;
     background-size: cover;
     display: flex;
     align-items: center;
@@ -250,6 +252,14 @@ body {
 .home-content .btn-box {
     opacity: 0;
     animation: fadeInUp 0.8s ease forwards;
+}
+@keyframes slideRight {
+    0% { transform: translateX(-100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+.home-content h1 {
+    animation: slideRight 1s ease forwards;
 }
 
 .home-content h1 { animation-delay: 0.5s; }
@@ -497,5 +507,74 @@ section {
 
     .navbar {
         display: none; /* We will need a hamburger menu later */
+    }
+}
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    background: #081b29; /* Matches your theme */
+}
+
+.about-img {
+    position: relative;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-img img {
+    width: 90%;
+    border-radius: 50%;
+    border: .2rem solid #00abf0;
+}
+
+.about-content {
+    text-align: left;
+}
+
+.about-content h2 {
+    text-align: left;
+    line-height: 1.2;
+}
+
+.about-content h3 {
+    font-size: 2.6rem;
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    margin: 2rem 0 3rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column; /* Stacks image on top of text for mobile */
+        padding-bottom: 5rem;
+    }
+}
+.about-img .circle-spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-top: .2rem solid transparent;
+    border-bottom: .2rem solid transparent;
+    border-left: .2rem solid #00abf0;
+    border-right: .2rem solid #00abf0;
+    animation: aboutSpin 8s linear infinite;
+}
+
+@keyframes aboutSpin {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 }
