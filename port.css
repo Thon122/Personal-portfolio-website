@@ -1,4 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* --- UNIVERSAL CUSTOM SCROLLBAR --- */
+
+/* 1. For Chrome 121+, Firefox, and Edge (Standard) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #00abf0 #081b29; /* [Thumb Color] [Track Color] */
+}
+
+/* 2. For Chrome (Older), Safari, and Opera (Webkit Fallback) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #081b29;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00abf0;
+    border-radius: 5px;
+    border: 2px solid #081b29; /* Padding effect around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0081b5;
+}
 
 html {
     font-size: 62.5%;
@@ -73,9 +99,10 @@ body {
     color: #ededed;
     text-decoration: none;
     font-weight: 500;
-    margin-left: 3.5rem;
+    margin-left: 4.5rem;
     transition: .3s;
-    /* margin-left: 4.5rem; */
+    position: relative;
+    transition: color 0.3s ease;
 }
 
 .navbar a:hover,
@@ -473,11 +500,11 @@ body {
 }
 
 .contact h2 {
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
 }
 
 .contact form {
-    max-width: 600px;
+    max-width: 70rem;
     margin: 0 auto;
     text-align: center;
 }
@@ -486,10 +513,18 @@ body {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 0px;
 }
 
-.contact form .input-box input,
+.contact form .input-box div input {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: #ededed;
+    background: #112e42;
+    border-radius: .8rem;
+    margin: .7rem 0;
+}
 .contact form textarea {
     width: 100%;
     padding: 1.5rem;
@@ -498,17 +533,18 @@ body {
     background: #112e42;
     border-radius: .8rem;
     margin: .7rem 0;
-    border: none;
+    resize: none;
 }
 
 /* Specific sizing for side-by-side inputs on desktop */
 .contact form .input-box input {
-    width: 48%;
+    width: 49%;
     /* Keeps two inputs side-by-side on desktop */
 }
 
 .contact form textarea {
     resize: none;
+    height: 25rem;
 }
 
 .contact form .btn {
@@ -527,7 +563,7 @@ body {
     cursor: pointer;
     border: none;
     /* Removes default button border */
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 .contact form .btn:hover {
@@ -540,8 +576,8 @@ body {
 
 /* Mobile Responsiveness for Form */
 @media (max-width: 600px) {
-    .contact form .input-box input {
-        width: 100%;
+    .contact form .input-box div {
+        width: 100% !important;
     }
 }
 
@@ -760,4 +796,104 @@ section {
         color: #fff;
         text-align: center;
     }
+}
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00abf0;
+    transition: width 0.3s ease;
+}
+
+.navbar a.active::after {
+    width: 100%;
+}
+/* --- Modal Overlay Layout --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 27, 41, 0.7); /* Dark semi-transparent filter */
+    backdrop-filter: blur(8px); /* Blurs the portfolio underneath */
+    z-index: 2000; /* Higher than your fixed header navbar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+/* Toggle Class handled by JavaScript */
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Modal Content Card Box */
+.modal-content {
+    background: #112e42;
+    padding: 4rem;
+    border-radius: 2rem;
+    width: 90%;
+    max-width: 60rem;
+    border: 2px solid #00abf0;
+    box-shadow: 0 0 3rem rgba(0, 171, 240, 0.3);
+    position: relative;
+    transform: translateY(-50px);
+    transition: transform 0.4s ease;
+}
+
+.modal-overlay.open .modal-content {
+    transform: translateY(0);
+}
+
+/* Close Window 'X' Button */
+.modal-close {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    font-size: 3.5rem;
+    color: #ededed;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: #ff4a4a; /* Turns red on hover warning */
+}
+
+.modal-subtext {
+    font-size: 1.4rem;
+    color: #ededed;
+    text-align: center;
+    margin: -1.5rem 0 3rem 0;
+}
+
+/* Input boxes modified specifically for modal spacing */
+.input-box-modal {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-box-modal input, .modal-content textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    color: #ededed;
+    background: #081b29;
+    border-radius: .8rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.modal-content textarea {
+    resize: none;
+    margin-bottom: 2rem;
 }

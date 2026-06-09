@@ -14,7 +14,7 @@
         <a href="#" class="logo">Thon.</a>
         <i class='bx bx-menu' id="menu-icon"></i>
         <nav class="navbar">
-            <a href="#" class="active">Home</a>
+            <a href="#Home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#services">Services</a>
@@ -22,7 +22,7 @@
             <a href="#contact">Contact</a>
         </nav>
     </header>
-    <section class="home">
+    <section id="home" class="home">
         <div class="home-content">
             <h1>Hi, I'm Abraham Thon</h1>
             <h3>Full-Stack Developer</h3>
@@ -45,7 +45,7 @@
         </div>
         <span class="home-imgHover"></span>
     </section>
-    <section class="services" id="services">
+    <section id="services" class="services" >
         <h2 class="heading">Our <span>Services</span></h2>
 
         <div class="services-container">
@@ -74,7 +74,7 @@
             </div>
         </div>
     </section>
-    <section class="portfolio" id="portfolio">
+    <section id="portfolio" class="portfolio" >
         <h2 class="heading">Latest <span>Projects</span></h2>
 
         <div class="portfolio-container">
@@ -123,23 +123,51 @@
         </div>
         </div>
     </section>
-    <section class="contact" id="contact">
-        <h2 class="heading">Contact <span>Me!</span></h2>
+ <section id="contact" class="contact" >
+    <h2 class="heading">Contact <span>Me!</span></h2>
 
-        <form action="#">
-            <div class="input-box">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email Address" required>
+    <div data-fs-success style="display: none; background: #112e42; color: #00abf0; border: 1px solid #00abf0; padding: 1.5rem; border-radius: .8rem; font-size: 1.6rem; margin-bottom: 2rem; text-align: center; font-weight: 600;">
+        Message sent successfully! Thanks for reaching out.
+    </div>
+    <div data-fs-error style="display: none; background: rgba(255, 0, 0, 0.1); color: #ff4a4a; border: 1px solid #ff4a4a; padding: 1.5rem; border-radius: .8rem; font-size: 1.6rem; margin-bottom: 2rem; text-align: center;">
+        Oops! There was a problem submitting your form.
+    </div>
+
+    <form id="contact-form">
+        <div class="input-box">
+            <div style="width: 49%;">
+                <input type="text" name="name" placeholder="Full Name" data-fs-field required>
+                <span data-fs-error="name" style="color: #ff4a4a; font-size: 1.2rem; display: block; text-align: left;"></span>
             </div>
-            <div class="input-box">
-                <input type="number" placeholder="Mobile Number">
-                <input type="text" placeholder="Email Subject">
+            <div style="width: 49%;">
+                <input type="email" name="email" placeholder="Email Address" data-fs-field required>
+                <span data-fs-error="email" style="color: #ff4a4a; font-size: 1.2rem; display: block; text-align: left;"></span>
             </div>
-            <textarea name="" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
-            <input type="submit" value="Send Message" class="btn">
-        </form>
-    </section>
-    <section class="skills" id="skills">
+        </div>
+        <div class="input-box">
+            <div style="width: 49%;">
+                <input type="number" name="number" placeholder="Mobile Number" data-fs-field>
+                <span data-fs-error="number" style="color: #ff4a4a; font-size: 1.2rem; display: block; text-align: left;"></span>
+            </div>
+            <div style="width: 49%;">
+                <input type="text" name="subject" placeholder="Email Subject" data-fs-field>
+                <span data-fs-error="subject" style="color: #ff4a4a; font-size: 1.2rem; display: block; text-align: left;"></span>
+            </div>
+        </div>
+        
+        <textarea name="message" cols="30" rows="10" placeholder="Your Message" data-fs-field required></textarea>
+        <span data-fs-error="message" style="color: #ff4a4a; font-size: 1.2rem; display: block; text-align: left; margin-top: -1rem; margin-bottom: 1rem;"></span>
+        
+        <button type="submit" class="btn" data-fs-submit-btn>Send Message</button>
+    </form>
+</section>
+
+<script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'mzdqggkl' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+    <section id="skills" class="skills" >
         <h2 class="heading">My <span>Skills</span></h2>
 
         <div class="skills-row">
@@ -194,7 +222,7 @@
             </div>
         </div>
     </section>
-    <section class="about" id="about">
+    <section id="about" class="about" >
         <h2 class="heading">About <span>Me</span></h2>
 
         <div class="about-img">
@@ -217,5 +245,25 @@
             </div>
         </div>
     </section>
-    <script src="script.js"></script>
+    <script src="script.js"></script><div id="hire-modal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h2 class="heading">Hire <span>Me!</span></h2>
+        <p class="modal-subtext">Let's build something amazing together. Fill out the scope details below.</p>
+        
+        <form action="https://formspree.io/f/mzdqggkl" method="POST">
+            <div class="input-box-modal">
+                <input type="text" name="client_name" placeholder="Your Name or Company" required>
+                <input type="email" name="client_email" placeholder="Your Email Address" required>
+            </div>
+            <div class="input-box-modal">
+                <input type="text" name="project_budget" placeholder="Estimated Budget">
+                <input type="text" name="project_timeline" placeholder="Expected Timeline">
+            </div>
+            <textarea name="project_details" cols="30" rows="6" placeholder="Briefly describe your project goals..." required></textarea>
+            <button type="submit" class="btn">Submit Brief</button>
+        </form>
+    </div>
+</div>
+
 </body>
