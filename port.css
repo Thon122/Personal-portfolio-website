@@ -160,11 +160,6 @@ body {
     min-height: 100vh;
     padding: 13rem 6% 5rem;
   }
-  .home-sci {
-    position: static;
-    margin-top: 3.5rem;
-    width: 190px;
-  }
 }
 
 /* ============================================
@@ -221,6 +216,16 @@ body {
   width: 190px;
   display: flex;
   justify-content: space-between;
+}
+/* MOBILE HERO CONGESTION FIX (must stay after the
+   base .home-sci rule above, or the cascade lets
+   that rule win and silently re-breaks this) */
+@media (max-width: 768px) {
+  .home-sci {
+    position: static;
+    margin-top: 3.5rem;
+    width: 190px;
+  }
 }
 .home-sci a {
   position: relative;
