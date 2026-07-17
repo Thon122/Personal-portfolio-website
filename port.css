@@ -144,6 +144,30 @@ body {
 }
 
 /* ============================================
+   MOBILE HERO CONGESTION FIX
+   `.home-sci` was pinned with `position: absolute;
+   bottom: 40px`, a fixed distance from the bottom
+   of the viewport. On mobile the buttons stack
+   into a column and get taller, so they grow right
+   into those fixed-position social icons. Taking
+   the icons out of absolute positioning on small
+   screens (so they just flow after the buttons)
+   fixes the overlap for good, at any content height.
+   ============================================ */
+@media (max-width: 768px) {
+  .home {
+    height: auto;
+    min-height: 100vh;
+    padding: 13rem 6% 5rem;
+  }
+  .home-sci {
+    position: static;
+    margin-top: 3.5rem;
+    width: 190px;
+  }
+}
+
+/* ============================================
    POINT 5: BUTTON HOVER STATES
    Added a scale-up + glow on hover so users get
    immediate, tactile feedback.
@@ -336,7 +360,6 @@ body {
 .portfolio-box {
   position: relative;
   flex: 1 1 30rem;
-  max-width: 34rem;
   height: 320px;
   border-radius: 15px;
   overflow: hidden;
